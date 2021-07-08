@@ -6,6 +6,8 @@ A recurrent neural network implemented using TensorFlow for text generation.
 
 Recurrent neural networks (RNNs) are artificial neural networks that can use previous outputs as inputs while having hidden states. RNNs are great at handling sequential data (such as text, speech, video, etc.) due to their internal memory.
 
+Text generation is the use of natural language processing to generate text through software that is indistinguishable from that of text written by humans. It is the communication of ideas from data - something truly beautiful in and of itself. This can be an excellent tool for businesses, communication between medical professionals and patients, and our tools.
+
 ## How to Install
 
 Use a virtual environment! It's good developer practice and allows you to have installed certain versions of dependencies for your Python projects. This leads to less headaches and saves time.
