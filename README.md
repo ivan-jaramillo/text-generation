@@ -22,6 +22,12 @@ You can activate the virtual environment by doing the following:
 source env/bin/activate
 ```
 
+To install dependencies this project requires, you can do the following:
+
+```shell
+pip install -r requirements.txt
+```
+
 You can deactivate the virtual environment by doing the following:
 
 ```shell
