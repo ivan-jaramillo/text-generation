@@ -1,6 +1,6 @@
 # Text Generation
 
-A recurrent neural network implemented using TensorFlow for text generation.
+A recurrent neural network implemented using TensorFlow for text generation at the character level.
 
 ## Description
 
