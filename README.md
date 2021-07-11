@@ -37,3 +37,9 @@ deactivate
 ```
 
 ## How to Use
+
+You can run this program while in your virtual environment by doing the following:
+
+```shell
+python text-generation/main.py
+```
