@@ -10,6 +10,10 @@ import numpy as np
 import tensorflow as tf
 
 
+def split_input_target(sequence):
+    input_text = sequence[:-1]
+    target_text = sequence[1:]
+    return input_text, target_text
 
 
 def main():
