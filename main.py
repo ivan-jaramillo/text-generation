@@ -37,6 +37,27 @@ def main():
     vocab = sorted(set(text))
     print(f'There are {len(vocab)} unique characters in The War of the Worlds.')
 
+    # Vectorize the dataset.
+    tokens = text.split()
+    chars = tf.strings.unicode_split(tokens, input_encoding='UTF-8')
+    ids_from_chars = tf.keras.layers.StringLookup(vocabulary=list(vocab), mask_token=None)
+
+    # Obtain the vector of IDs from characters.
+    ids = ids_from_chars(chars)
+    print(ids)
+
+    def text_from_ids(ids):
+        return tf.strings.reduce_join(chars_from_ids(ids), axis=-1)
+
+    # Recover characters from the vector of IDs.
+    chars_from_ids = tf.keras.layers.StringLookup(vocabulary=ids_from_chars.get_vocabulary(), invert=True, mask_token=None)
+    print(chars_from_ids)
+
+    # Convert text vector into a stream of character indices.
+    all_ids = ids_from_chars(tf.strings.unicode_split(text, 'UTF-8'))
+    ids_dataset = tf.data.Dataset.from_tensor_slices(all_ids)
+    seq_length = 100
+    sequences = ids_dataset.batch(seq_length+1, drop_remainder=True)
 
 
 if __name__ == '__main__':
