@@ -63,6 +63,16 @@ def main():
     seq_length = 100
     sequences = ids_dataset.batch(seq_length+1, drop_remainder=True)
 
+    for seq in sequences.take(5):
+        print(text_from_ids(seq).numpy())
+
+    training_dataset = split_input_target(list("Tensorflow"))
+    dataset = sequences.map(split_input_target)
+
+    for input_example, target_example in dataset.take(1):
+        print("Input :", text_from_ids(input_example).numpy())
+        print("Target:", text_from_ids(target_example).numpy())
+
 
 if __name__ == '__main__':
     main()
