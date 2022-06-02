@@ -73,6 +73,23 @@ def main():
         print("Input :", text_from_ids(input_example).numpy())
         print("Target:", text_from_ids(target_example).numpy())
 
+    # Create training batches.
+    BATCH_SIZE = 64
+
+    # Buffer size to shuffle the dataset
+    # (TF data is designed to work with possibly infinite sequences,
+    # so it doesn't attempt to shuffle the entire sequence in memory. Instead,
+    # it maintains a buffer in which it shuffles elements).
+    BUFFER_SIZE = 10000
+
+    dataset = (
+        dataset
+        .shuffle(BUFFER_SIZE)
+        .batch(BATCH_SIZE, drop_remainder=True)
+        .prefetch(tf.data.experimental.AUTOTUNE))
+
+    print(dataset)
+
 
 if __name__ == '__main__':
     main()
